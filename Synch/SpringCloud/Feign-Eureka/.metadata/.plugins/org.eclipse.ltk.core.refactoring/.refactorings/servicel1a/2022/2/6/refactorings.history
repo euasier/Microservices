@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;micros.synch.springcloud.servicel1a.Servicel1a&apos; to &apos;Servicel1aController&apos;&#x0A;- Original project: &apos;servicel1a&apos;&#x0A;- Original element: &apos;micros.synch.springcloud.servicel1a.Servicel1a&apos;&#x0A;- Renamed element: &apos;micros.synch.springcloud.servicel1a.Servicel1aController&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Servicel1a&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;micros.synch.springcloud.servicel1a{Servicel1a.java[Servicel1a" matchStrategy="1" name="Servicel1aController" qualified="false" references="true" similarDeclarations="false" stamp="1643914109101" textual="false" version="1.0"/>
+</session>

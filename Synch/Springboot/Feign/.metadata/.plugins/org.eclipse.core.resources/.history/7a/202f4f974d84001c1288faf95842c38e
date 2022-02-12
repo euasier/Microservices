@@ -1,0 +1,5 @@
+package micros.synch.springboot.servicel2a;
+
+public class Servicel2aController {
+
+}

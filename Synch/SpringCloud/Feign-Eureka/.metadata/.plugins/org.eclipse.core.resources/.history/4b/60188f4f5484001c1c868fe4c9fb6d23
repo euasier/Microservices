@@ -1,0 +1,2 @@
+spring.application.name=servicel2a
+server.port=8002

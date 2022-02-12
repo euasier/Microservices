@@ -1,0 +1,5 @@
+package micros.synch.springboot.servicel1a;
+
+public interface Servicel2aFeign {
+
+}

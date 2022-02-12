@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
+    <fullyQualifiedTypeName name="io.github.resilience4j.circuitbreaker.CircuitBreaker"/>
+    <fullyQualifiedTypeName name="io.vavr.CheckedFunction0"/>
+    <fullyQualifiedTypeName name="java.util.function.Function"/>
+    <fullyQualifiedTypeName name="java.util.function.Supplier"/>
+</qualifiedTypeNameHistroy>

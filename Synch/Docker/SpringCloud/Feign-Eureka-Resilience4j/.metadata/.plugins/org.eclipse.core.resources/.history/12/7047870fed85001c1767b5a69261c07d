@@ -1,0 +1,56 @@
+package micros.synch.springcloud.servicel1a;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.retry.Retry;
+import io.vavr.CheckedFunction0;
+import io.vavr.control.Try;
+
+@RestController
+public class Servicel1aController {
+
+	@Autowired
+	Environment env;
+
+	@Autowired
+	Servicel2aFeign servicel2aFeign;
+
+	@GetMapping(value="/servicel1a")
+	public String service1() {
+		return "Servicel1a on port: " + env.getProperty("local.server.port");
+	}
+
+	private String serviceRetry() {
+		Retry retry = Retry.ofDefaults("id");
+		CheckedFunction0<String> decoratedRetryAndCBServicelevel2a = Retry
+		  .decorateCheckedSupplier(retry, servicel2aFeign::service);
+		
+		Try<String> result = Try.of(decoratedRetryAndCBServicelevel2a)
+				  .recover((throwable) -> "Hello world from retry");
+		
+		return result.get();
+	}
+
+	@GetMapping(value="/servicel1aservicel2a")
+	public String serviceRetryAndCB() {
+		CircuitBreaker circuitBreaker = CircuitBreaker.ofDefaults("testName");
+		CheckedFunction0<String> decoratedCBServicelevel2a = CircuitBreaker
+		        .decorateCheckedSupplier(circuitBreaker, this::serviceRetry);
+		
+		try {
+			return "Servicel1a on port: " + env.getProperty("local.server.port") + " " + decoratedCBServicelevel2a.apply();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			System.out.println("****************************");
+			e.printStackTrace();
+		}
+		return "Hello world from CB";
+	}
+}

@@ -1,0 +1,13 @@
+package micros.synch.springboot.servicel1a;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class Servicel1a {
+
+	@GetMapping(value="/servicel1a")
+	public String service() {
+		return "Servicel1a";
+	}
+}
